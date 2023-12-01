@@ -7,9 +7,9 @@ pygame.init()
 
 # Константы для размеров
 SCREEN_WIDTH, SCREEN_HEIGHT = 640, 480
-GRIDSIZE = 20
-GRID_WIDTH = SCREEN_WIDTH // GRIDSIZE
-GRID_HEIGHT = SCREEN_HEIGHT // GRIDSIZE
+GRID_SIZE = 20
+GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
+GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
 
 # Направления движения
 UP = (0, -1)
@@ -17,7 +17,10 @@ DOWN = (0, 1)
 LEFT = (-1, 0)
 RIGHT = (1, 0)
 
-# Настройка экрана
+# Цвета фона
+BACKGROUND_COLOR = (0, 0, 0)
+
+# Настройка игрового окна
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
 
 # Заголовок окна
@@ -25,9 +28,6 @@ pygame.display.set_caption('Змейка')
 
 # Настройка времени
 clock = pygame.time.Clock()
-
-# Цвета фона
-BACKGROUND_COLOR = (0, 0, 0)
 
 
 class GameObject:
@@ -55,8 +55,8 @@ class Snake(GameObject):
         cur = self.get_head_position()
         x, y = self.direction
         new = (
-            ((cur[0] + (x * GRIDSIZE)) % SCREEN_WIDTH),
-            (cur[1] + (y * GRIDSIZE)) % SCREEN_HEIGHT
+            ((cur[0] + (x * GRID_SIZE)) % SCREEN_WIDTH),
+            (cur[1] + (y * GRID_SIZE)) % SCREEN_HEIGHT
         )
 
         if len(self.positions) > 2 and new in self.positions[2:]:
@@ -73,13 +73,13 @@ class Snake(GameObject):
 
     def draw(self, surface):
         for p in self.positions[:-1]:
-            r = pygame.Rect((p[0], p[1]), (GRIDSIZE, GRIDSIZE))
+            r = pygame.Rect((p[0], p[1]), (GRID_SIZE, GRID_SIZE))
             pygame.draw.rect(surface, self.color, r)
             pygame.draw.rect(surface, (93, 216, 228), r, 1)
 
         # Отрисовка головы змейки
         head = self.positions[0]
-        head_rect = pygame.Rect((head[0], head[1]), (GRIDSIZE, GRIDSIZE))
+        head_rect = pygame.Rect((head[0], head[1]), (GRID_SIZE, GRID_SIZE))
         pygame.draw.rect(surface, self.color, head_rect)
         pygame.draw.rect(surface, (93, 216, 228), head_rect, 1)
 
@@ -87,7 +87,7 @@ class Snake(GameObject):
         if self.last:
             last_rect = pygame.Rect(
                 (self.last[0], self.last[1]),
-                (GRIDSIZE, GRIDSIZE)
+                (GRID_SIZE, GRID_SIZE)
             )
             pygame.draw.rect(surface, BACKGROUND_COLOR, last_rect)
 
@@ -119,14 +119,14 @@ class Apple(GameObject):
 
     def _randomize_position(self):
         self.position = (
-            randint(0, GRID_WIDTH-1) * GRIDSIZE,
-            randint(0, GRID_HEIGHT-1) * GRIDSIZE
+            randint(0, GRID_WIDTH-1) * GRID_SIZE,
+            randint(0, GRID_HEIGHT-1) * GRID_SIZE
         )
 
     def draw(self, surface):
         r = pygame.Rect(
             (self.position[0], self.position[1]),
-            (GRIDSIZE, GRIDSIZE)
+            (GRID_SIZE, GRID_SIZE)
         )
         pygame.draw.rect(surface, self.color, r)
         pygame.draw.rect(surface, (93, 216, 228), r, 1)
@@ -146,7 +146,7 @@ def main():
             snake.length += 1
             apple._randomize_position()
 
-        # Проверка на столкновение со стенами или самим собой
+        # Проверка на столкновение с самим собой
         if snake.get_head_position() in snake.positions[1:]:
             snake._reset()
 
