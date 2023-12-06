@@ -1,6 +1,6 @@
-import pygame
 from random import choice, randint
 
+import pygame
 
 # Инициализация PyGame
 pygame.init()
@@ -63,7 +63,10 @@ class Snake(GameObject):
             self._reset()
         else:
             self.positions.insert(0, new)
-            self.last = self.positions.pop() if len(self.positions) > self.length else None
+            self.last = (
+                self.positions.pop() if len(self.positions) > self.length
+                else None
+            )
 
     def _reset(self):
         self.length = 1
@@ -72,10 +75,12 @@ class Snake(GameObject):
         screen.fill(BACKGROUND_COLOR)
 
     def draw(self, surface):
-        for p in self.positions[:-1]:
-            r = pygame.Rect((p[0], p[1]), (GRID_SIZE, GRID_SIZE))
-            pygame.draw.rect(surface, self.color, r)
-            pygame.draw.rect(surface, (93, 216, 228), r, 1)
+        for position in self.positions[:-1]:
+            rect = (
+                pygame.Rect((position[0], position[1]), (GRID_SIZE, GRID_SIZE))
+            )
+            pygame.draw.rect(surface, self.color, rect)
+            pygame.draw.rect(surface, (93, 216, 228), rect, 1)
 
         # Отрисовка головы змейки
         head = self.positions[0]
@@ -119,17 +124,17 @@ class Apple(GameObject):
 
     def _randomize_position(self):
         self.position = (
-            randint(0, GRID_WIDTH-1) * GRID_SIZE,
-            randint(0, GRID_HEIGHT-1) * GRID_SIZE
+            randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+            randint(0, GRID_HEIGHT - 1) * GRID_SIZE
         )
 
     def draw(self, surface):
-        r = pygame.Rect(
+        rect = pygame.Rect(
             (self.position[0], self.position[1]),
             (GRID_SIZE, GRID_SIZE)
         )
-        pygame.draw.rect(surface, self.color, r)
-        pygame.draw.rect(surface, (93, 216, 228), r, 1)
+        pygame.draw.rect(surface, self.color, rect)
+        pygame.draw.rect(surface, (93, 216, 228), rect, 1)
 
 
 def main():
