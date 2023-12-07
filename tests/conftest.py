@@ -102,7 +102,7 @@ def modified_clock():
             return self.clock.__getattribute__(name)
 
     original_clock = the_snake.clock
-    modified_clock_obj = _Clock(the_snake.clock)
+    modified_clock_obj = _Clock(original_clock)
     the_snake.clock = modified_clock_obj
     yield
     the_snake.clock = original_clock

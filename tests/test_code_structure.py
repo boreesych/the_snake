@@ -13,9 +13,9 @@ EXPECTED_GAME_OBJECT_ATTRS = (
 
 
 @pytest.mark.parametrize(
-        'attr_type, attr_name',
-        EXPECTED_GAME_OBJECT_ATTRS,
-        ids=[elem[1] for elem in EXPECTED_GAME_OBJECT_ATTRS]
+    'attr_type, attr_name',
+    EXPECTED_GAME_OBJECT_ATTRS,
+    ids=[elem[1] for elem in EXPECTED_GAME_OBJECT_ATTRS]
 )
 def test_game_object_attributes(game_object, attr_type, attr_name):
     assert hasattr(game_object, attr_name), (
@@ -39,9 +39,9 @@ def test_apple_inherits_from_game_object():
 
 
 @pytest.mark.parametrize(
-        'attr_type, attr_name',
-        EXPECTED_APPLE_ATTRS,
-        ids=[elem[1] for elem in EXPECTED_APPLE_ATTRS]
+    'attr_type, attr_name',
+    EXPECTED_APPLE_ATTRS,
+    ids=[elem[1] for elem in EXPECTED_APPLE_ATTRS]
 )
 def test_apple_attributes(apple, attr_type, attr_name):
     assert hasattr(apple, attr_name), (
@@ -73,9 +73,9 @@ def test_snake_inherits_from_game_object():
 
 
 @pytest.mark.parametrize(
-        'attr_type, attr_name',
-        EXPECTED_SNAKE_ATTRS,
-        ids=[elem[1] for elem in EXPECTED_SNAKE_ATTRS]
+    'attr_type, attr_name',
+    EXPECTED_SNAKE_ATTRS,
+    ids=[elem[1] for elem in EXPECTED_SNAKE_ATTRS]
 )
 def test_snake_attributes(snake, attr_type, attr_name):
     assert hasattr(snake, attr_name), (
@@ -101,9 +101,9 @@ EXPECTED_MODULE_ELEMENTS = (
 
 
 @pytest.mark.parametrize(
-        'element_type, element_name',
-        EXPECTED_MODULE_ELEMENTS,
-        ids=[elem[1] for elem in EXPECTED_MODULE_ELEMENTS]
+    'element_type, element_name',
+    EXPECTED_MODULE_ELEMENTS,
+    ids=[elem[1] for elem in EXPECTED_MODULE_ELEMENTS]
 )
 def test_elements_exist(element_type, element_name):
     assert hasattr(the_snake, element_name), (
@@ -113,11 +113,11 @@ def test_elements_exist(element_type, element_name):
 
 
 @pytest.mark.parametrize(
-        'expected_type, var_name',
-        (
-            (pygame.Surface, 'screen'),
-            (pygame.time.Clock, 'clock'),
-        ),
+    'expected_type, var_name',
+    (
+        (pygame.Surface, 'screen'),
+        (pygame.time.Clock, 'clock'),
+    ),
 )
 def test_vars_type(expected_type, var_name):
     assert isinstance(getattr(the_snake, var_name, None), expected_type), (
