@@ -1,6 +1,5 @@
-import pytest
-
 import pygame
+import pytest
 
 import the_snake
 
@@ -123,4 +122,10 @@ def test_vars_type(expected_type, var_name):
     assert isinstance(getattr(the_snake, var_name, None), expected_type), (
         'Убедитесь, что в модуле `the_snake` есть переменная '
         f'`{var_name}` типа `{expected_type.__name__}`.'
+    )
+
+
+def test_main_exists():
+    assert hasattr(the_snake, 'main'), (
+        'Убедитесь, что в модуле `the_snake` есть функция `main`.'
     )
