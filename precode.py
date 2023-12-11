@@ -18,7 +18,7 @@ LEFT = (-1, 0)
 RIGHT = (1, 0)
 
 # Цвета фона - черный
-DESK_BACKGROUND_COLOR = (0, 0, 0)
+BOARD_BACKGROUND_COLOR = (0, 0, 0)
 
 # Скорость движения змейки
 SPEED = 15
@@ -82,7 +82,7 @@ if __name__ == '__main__':
 #             (self.last[0], self.last[1]),
 #             (GRID_SIZE, GRID_SIZE)
 #         )
-#         pygame.draw.rect(surface, DESK_BACKGROUND_COLOR, last_rect)
+#         pygame.draw.rect(surface, BOARD_BACKGROUND_COLOR, last_rect)
 
 # Функция обработки действий пользовыателя
 # def handle_keys(game_object):
