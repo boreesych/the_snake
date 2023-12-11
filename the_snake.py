@@ -1,6 +1,6 @@
-import pygame
 from random import choice, randint
 
+import pygame
 
 # Инициализация PyGame
 pygame.init()
@@ -31,9 +31,8 @@ clock = pygame.time.Clock()
 
 
 class GameObject:
-    """
-    Базовый класс для игровых объектов.
-    """
+    """Базовый класс для игровых объектов."""
+
     def __init__(self):
         """Инициализация базового игрового объекта."""
         self.position = ((SCREEN_WIDTH // 2), (SCREEN_HEIGHT // 2))
@@ -45,9 +44,8 @@ class GameObject:
 
 
 class Snake(GameObject):
-    """
-    Класс для представления змейки в игре.
-    """
+    """Класс для представления змейки в игре."""
+
     def __init__(self):
         """Инициализация змейки."""
         super().__init__()
@@ -77,12 +75,13 @@ class Snake(GameObject):
             self._reset()
         else:
             self.positions.insert(0, new)
-            self.last = self.positions.pop() if len(self.positions) > self.length else None
+            self.last = (
+                self.positions.pop() if len(self.positions) > self.length
+                else None
+            )
 
     def _reset(self):
-        """
-        Сброс змейки к начальному состоянию после столкновения.
-        """
+        """Сброс змейки к начальному состоянию после столкновения."""
         self.length = 1
         self.positions = [self.position]
         self.direction = choice([UP, DOWN, LEFT, RIGHT])
@@ -95,10 +94,12 @@ class Snake(GameObject):
         Args:
             surface: поверхность для отрисовки (pygame.Surface).
         """
-        for p in self.positions[:-1]:
-            r = pygame.Rect((p[0], p[1]), (GRID_SIZE, GRID_SIZE))
-            pygame.draw.rect(surface, self.color, r)
-            pygame.draw.rect(surface, (93, 216, 228), r, 1)
+        for position in self.positions[:-1]:
+            rect = (
+                pygame.Rect((position[0], position[1]), (GRID_SIZE, GRID_SIZE))
+            )
+            pygame.draw.rect(surface, self.color, rect)
+            pygame.draw.rect(surface, (93, 216, 228), rect, 1)
 
         # Отрисовка головы змейки
         head = self.positions[0]
@@ -137,24 +138,19 @@ class Snake(GameObject):
 
 
 class Apple(GameObject):
-    """
-    Класс для представления яблока в игре.
-    """
+    """Класс для представления яблока в игре."""
+
     def __init__(self):
-        """
-        Инициализация яблока.
-        """
+        """Инициализация яблока."""
         self.color = (255, 0, 0)
 
         self._randomize_position()
 
     def _randomize_position(self):
-        """
-        Случайное размещение яблока на игровом поле.
-        """
+        """Случайное размещение яблока на игровом поле."""
         self.position = (
-            randint(0, GRID_WIDTH-1) * GRID_SIZE,
-            randint(0, GRID_HEIGHT-1) * GRID_SIZE
+            randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+            randint(0, GRID_HEIGHT - 1) * GRID_SIZE
         )
 
     def draw(self, surface):
@@ -164,18 +160,16 @@ class Apple(GameObject):
         Args:
             surface: поверхность для отрисовки (pygame.Surface).
         """
-        r = pygame.Rect(
+        rect = pygame.Rect(
             (self.position[0], self.position[1]),
             (GRID_SIZE, GRID_SIZE)
         )
-        pygame.draw.rect(surface, self.color, r)
-        pygame.draw.rect(surface, (93, 216, 228), r, 1)
+        pygame.draw.rect(surface, self.color, rect)
+        pygame.draw.rect(surface, (93, 216, 228), rect, 1)
 
 
 def main():
-    """
-    Главная функция для запуска игры.
-    """
+    """Главная функция для запуска игры."""
     snake = Snake()
     apple = Apple()
 

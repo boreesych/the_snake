@@ -1,6 +1,6 @@
-import pygame
 from random import choice, randint
 
+import pygame
 
 # Инициализация PyGame
 pygame.init()
@@ -51,19 +51,21 @@ if __name__ == '__main__':
 
 # Метод draw класса Apple
 # def draw(self, surface):
-#     r = pygame.Rect(
+#     rect = pygame.Rect(
 #         (self.position[0], self.position[1]),
 #         (GRID_SIZE, GRID_SIZE)
 #     )
-#     pygame.draw.rect(surface, self.color, r)
-#     pygame.draw.rect(surface, (93, 216, 228), r, 1)
+#     pygame.draw.rect(surface, self.color, rect)
+#     pygame.draw.rect(surface, (93, 216, 228), rect, 1)
 
 # Метод draw класса Snake
 # def draw(self, surface):
-#     for p in self.positions[:-1]:
-#         r = pygame.Rect((p[0], p[1]), (GRID_SIZE, GRID_SIZE))
-#         pygame.draw.rect(surface, self.color, r)
-#         pygame.draw.rect(surface, (93, 216, 228), r, 1)
+#     for position in self.positions[:-1]:
+#         rect = (
+#             pygame.Rect((position[0], position[1]), (GRID_SIZE, GRID_SIZE))
+#         )
+#         pygame.draw.rect(surface, self.color, rect)
+#         pygame.draw.rect(surface, (93, 216, 228), rect, 1)
 
 #     # Отрисовка головы змейки
 #     head = self.positions[0]
