@@ -101,7 +101,6 @@ class Snake(GameObject):
             pygame.draw.rect(surface, self.color, rect)
             pygame.draw.rect(surface, (93, 216, 228), rect, 1)
 
-
         # Отрисовка головы змейки
         head = self.positions[0]
         head_rect = pygame.Rect((head[0], head[1]), (GRID_SIZE, GRID_SIZE))
@@ -142,9 +141,7 @@ class Apple(GameObject):
     """Класс для представления яблока в игре."""
 
     def __init__(self):
-        """
-        Инициализация яблока.
-        """
+        """Инициализация яблока."""
         self.color = (255, 0, 0)
 
         self._randomize_position()
