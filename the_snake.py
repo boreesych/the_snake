@@ -18,7 +18,7 @@ LEFT = (-1, 0)
 RIGHT = (1, 0)
 
 # Цвета фона
-DESK_BACKGROUND_COLOR = (0, 0, 0)
+BOARD_BACKGROUND_COLOR = (0, 0, 0)
 
 # Настройка игрового окна
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
@@ -83,7 +83,7 @@ class Snake(GameObject):
         self.length = 1
         self.positions = [self.position]
         self.direction = choice([UP, DOWN, LEFT, RIGHT])
-        screen.fill(DESK_BACKGROUND_COLOR)
+        screen.fill(BOARD_BACKGROUND_COLOR)
 
     def draw(self, surface):
         """
@@ -111,7 +111,7 @@ class Snake(GameObject):
                 (self.last[0], self.last[1]),
                 (GRID_SIZE, GRID_SIZE)
             )
-            pygame.draw.rect(surface, DESK_BACKGROUND_COLOR, last_rect)
+            pygame.draw.rect(surface, BOARD_BACKGROUND_COLOR, last_rect)
 
     def update_direction(self):
         """Обновление направления движения змейки, если оно было изменено."""

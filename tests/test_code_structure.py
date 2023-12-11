@@ -87,7 +87,7 @@ EXPECTED_MODULE_ELEMENTS = (
     ('константа', 'GRID_SIZE'),
     ('константа', 'GRID_WIDTH'),
     ('константа', 'GRID_HEIGHT'),
-    ('константа', 'DESK_BACKGROUND_COLOR'),
+    ('константа', 'BOARD_BACKGROUND_COLOR'),
     ('константа', 'UP'),
     ('константа', 'DOWN'),
     ('константа', 'LEFT'),
