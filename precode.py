@@ -20,6 +20,9 @@ RIGHT = (1, 0)
 # Цвета фона - черный
 DESK_BACKGROUND_COLOR = (0, 0, 0)
 
+# Скорость движения змейки
+SPEED = 15
+
 # Настройка игрового окна
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
 
@@ -39,7 +42,7 @@ def main():
     ...
 
     while True:
-        clock.tick(20)
+        clock.tick(SPEED)
 
         # Тут опишите основную логику игры
         ...

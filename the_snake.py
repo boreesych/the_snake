@@ -17,6 +17,9 @@ DOWN = (0, 1)
 LEFT = (-1, 0)
 RIGHT = (1, 0)
 
+# Скорость движения змейки
+SPEED = 15
+
 # Цвета фона
 BOARD_BACKGROUND_COLOR = (0, 0, 0)
 
@@ -172,7 +175,7 @@ def main():
     apple = Apple()
 
     while True:
-        clock.tick(20)
+        clock.tick(SPEED)
         handle_keys(snake)
         snake.update_direction()
         snake.move()
