@@ -18,7 +18,7 @@ LEFT = (-1, 0)
 RIGHT = (1, 0)
 
 # Скорость движения змейки
-SPEED = 15
+SPEED = 20
 
 # Цвета фона
 BOARD_BACKGROUND_COLOR = (0, 0, 0)
