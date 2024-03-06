@@ -102,7 +102,7 @@ class Snake(GameObject):
         """
         for position in self.positions[:-1]:
             rect = (
-                pygame.Rect((position[0], position[1]), (GRID_SIZE, GRID_SIZE))
+                pygame.Rect(position, (GRID_SIZE, GRID_SIZE))
             )
             pygame.draw.rect(screen, self.body_color, rect)
             pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
@@ -115,8 +115,7 @@ class Snake(GameObject):
         # Затирание последнего сегмента
         if self.last:
             last_rect = pygame.Rect(
-                (self.last[0], self.last[1]),
-                (GRID_SIZE, GRID_SIZE)
+                self.last, (GRID_SIZE, GRID_SIZE)
             )
             pygame.draw.rect(screen, BOARD_BACKGROUND_COLOR, last_rect)
 
@@ -147,8 +146,7 @@ class Apple(GameObject):
         Отрисовка яблока на игровом поле.
         """
         rect = pygame.Rect(
-            (self.position[0], self.position[1]),
-            (GRID_SIZE, GRID_SIZE)
+            self.position, (GRID_SIZE, GRID_SIZE)
         )
         pygame.draw.rect(screen, self.body_color, rect)
         pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
