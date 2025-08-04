@@ -2,6 +2,9 @@
 
 A simple implementation of the classic Snake game using Python and Pygame.
 
+This project is an example of a final assignment for students learning the basics of Python programming.
+It demonstrates core programming concepts such as classes, inheritance, event handling, and game loops using a simple and engaging game.
+
 ## Features
 
 - Classic snake gameplay
